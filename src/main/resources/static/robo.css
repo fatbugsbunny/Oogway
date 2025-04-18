@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 1.2rem;
+}
+
+.quality-indicator {
+    text-align: center;
+    margin: 2rem 0 3rem;
+}
+
+.quality-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quality-good {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 2px solid #16a34a;
+}
+
+.quality-warning {
+    background-color: #fef9c3;
+    color: #854d0e;
+    border: 2px solid #eab308;
+}
+
+.quality-bad {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 2px solid #dc2626;
+}
+
+.quality-icon {
+    margin-right: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.status-good {
+    background-color: #86efac;
+    color: #166534;
+}
+
+.status-warning {
+    background-color: #fde68a;
+    color: #854d0e;
+}
+
+.status-bad {
+    background-color: #fca5a5;
+    color: #991b1b;
+}
+
+.stat-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #475569;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.stat-description {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #64748b;
+    padding: 2rem;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Color themes for each card */
+.ph {
+    background: linear-gradient(145deg, #e0f2fe, #f0fdfa);
+    border-top: 3px solid #0284c7;
+}
+
+.ph .stat-value {
+    color: #0284c7;
+}
+
+.salt {
+    background: linear-gradient(145deg, #fef2f2, #fffbeb);
+    border-top: 3px solid #b45309;
+}
+
+.salt .stat-value {
+    color: #b45309;
+}
+
+.temperature {
+    background: linear-gradient(145deg, #fee2e2, #ffedd5);
+    border-top: 3px solid #dc2626;
+}
+
+.temperature .stat-value {
+    color: #dc2626;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+}
