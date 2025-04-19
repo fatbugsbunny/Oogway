@@ -1,2 +1,7 @@
-package com.example.demo;public class Repository {
+package com.example.demo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@org.springframework.stereotype.Repository
+public interface Repository extends JpaRepository<WaterData, Long> {
 }

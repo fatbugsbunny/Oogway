@@ -1,18 +1,16 @@
-let data;
-
 try {
     const socket = new SockJS('http://localhost:8080/ws'); // backend endpoint
     const stompClient = Stomp.over(socket);
 
     stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
+        console.log('Connectedddd: ' + frame);
 
         stompClient.subscribe('/topic/dashboard', function (message) {
-            data = JSON.parse(message.body)
+            renderWaterData(JSON.parse(message.body));
             console.log("#######");
-            console.log(data);
-            console.log("#######")
         });
+
+        console.log('📡 Subscribed to /topic/dashboard');
     });
 } catch (error) {
     console.error("Error fetching water data:", error);
@@ -97,7 +95,7 @@ function getStatusIcon(status) {
 }
 
 // Function to render the data
-function renderWaterData() {
+function renderWaterData(data) {
     const content = document.getElementById('content');
     const phStatus = getPHStatus(data.pH);
     const saltStatus = getSaltStatus(data.saltLevel);
@@ -160,13 +158,3 @@ function renderWaterData() {
                 </div>
             `;
 }
-
-// Initialize the app
-function initApp() {
-    if (data) {
-        renderWaterData(data);
-    }
-}
-
-// Start the app when the page loads
-window.addEventListener('load', initApp);
