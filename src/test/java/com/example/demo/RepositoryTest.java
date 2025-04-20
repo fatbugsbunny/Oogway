@@ -23,7 +23,7 @@ class RepositoryTest {
     void setUp() {
         testedWaterData = new WaterData();
         testedWaterData.setpH(new BigDecimal("7.4"));
-        testedWaterData.setORP(new BigDecimal("4.5g"));
+        testedWaterData.setORP(new BigDecimal("4.5"));
         testedWaterData.setTemperature(new BigDecimal("34.6"));
         repository.save(testedWaterData);
     }

@@ -1,5 +1,5 @@
 try {
-    const socket = new SockJS('http://localhost:8080/ws'); // backend endpoint
+    const socket = new SockJS('/ws'); // backend endpoint
     const stompClient = Stomp.over(socket);
 
     stompClient.connect({}, function (frame) {
