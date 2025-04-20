@@ -15,7 +15,16 @@ public class WaterData {
     @Column
     private BigDecimal pH;
     @Column
-    private BigDecimal saltLevel;
+    private BigDecimal ORP;
+
+    public WaterData(){
+    }
+
+    public WaterData(BigDecimal temperature, BigDecimal pH, BigDecimal ORP) {
+        this.temperature = temperature;
+        this.pH = pH;
+        this.ORP = ORP;
+    }
 
     public BigDecimal getpH() {
         return pH;
@@ -25,12 +34,12 @@ public class WaterData {
         this.pH = pH;
     }
 
-    public BigDecimal getSaltLevel() {
-        return saltLevel;
+    public BigDecimal getORP() {
+        return ORP;
     }
 
-    public void setSaltLevel(BigDecimal saltLevels) {
-        this.saltLevel = saltLevels;
+    public void setORP(BigDecimal saltLevels) {
+        this.ORP = saltLevels;
     }
 
     public BigDecimal getTemperature() {
@@ -49,12 +58,12 @@ public class WaterData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof WaterData waterData)) return false;
-        return Objects.equals(id, waterData.id) && Objects.equals(temperature, waterData.temperature) && Objects.equals(pH, waterData.pH) && Objects.equals(saltLevel, waterData.saltLevel);
+        return Objects.equals(id, waterData.id) && Objects.equals(temperature, waterData.temperature) && Objects.equals(pH, waterData.pH) && Objects.equals(ORP, waterData.ORP);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, temperature, pH, saltLevel);
+        return Objects.hash(id, temperature, pH, ORP);
     }
 
     public void setId(Long id) {

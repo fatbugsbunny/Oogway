@@ -37,20 +37,20 @@ function getPHDescription(pH) {
     return "Neutral - Optimal for aquatic life";
 }
 
-// Function to determine salt level status
-function getSaltStatus(salt) {
-    if (salt < 25 || salt > 45) return "bad";
-    if (salt < 30 || salt > 40) return "warning";
+// Function to determine ORP status
+function getORPStatus(orp) {
+    if (orp < 200 || orp > 750) return "bad";
+    if (orp < 300 || orp > 500) return "warning";
     return "good";
 }
 
-// Function to determine salt level description
-function getSaltDescription(salt) {
-    if (salt < 25) return "Very low salinity - Unsuitable for marine life";
-    if (salt > 45) return "Very high salinity - Stressful for marine life";
-    if (salt < 30) return "Low salinity - Suitable for brackish species only";
-    if (salt > 40) return "High salinity - May stress some marine species";
-    return "Normal ocean salinity - Ideal for marine ecosystems";
+// Function to determine ORP description
+function getORPDescription(orp) {
+    if (orp < 200) return "ORP shumë e ulët - Oksidim i dobët, mund të tregojë ndotës";
+    if (orp > 600) return "ORP shumë e lartë - Oksidim i larte, mjedis shume i paster";
+    if (orp < 300) return "Low ORP - Reduced sanitizing capability";
+    if (orp > 500) return "High ORP - Strong oxidizing environment";
+    return "Ideal ORP - Optimal sanitizing capability";
 }
 
 // Function to determine temperature status
@@ -70,16 +70,18 @@ function getTempDescription(temp) {
 }
 
 // Function to determine overall water quality
-function getOverallQuality(pH, salt, temp) {
+
+// Update in the getOverallQuality function:
+function getOverallQuality(pH, orp, temp) {
     const phStatus = getPHStatus(pH);
-    const saltStatus = getSaltStatus(salt);
+    const orpStatus = getORPStatus(orp);  // Changed from saltStatus
     const tempStatus = getTempStatus(temp);
 
-    if (phStatus === "bad" || saltStatus === "bad" || tempStatus === "bad") {
+    if (phStatus === "bad" || orpStatus === "bad" || tempStatus === "bad") {
         return "bad";
     }
 
-    if (phStatus === "warning" || saltStatus === "warning" || tempStatus === "warning") {
+    if (phStatus === "warning" || orpStatus === "warning" || tempStatus === "warning") {
         return "warning";
     }
 
@@ -98,9 +100,9 @@ function getStatusIcon(status) {
 function renderWaterData(data) {
     const content = document.getElementById('content');
     const phStatus = getPHStatus(data.pH);
-    const saltStatus = getSaltStatus(data.saltLevel);
+    const orpStatus = getORPStatus(data.orp);
     const tempStatus = getTempStatus(data.temperature);
-    const overallQuality = getOverallQuality(data.pH, data.saltLevel, data.temperature);
+    const overallQuality = getOverallQuality(data.pH, data.orp, data.temperature);
 
     let qualityBadge = '';
     if (overallQuality === "good") {
@@ -139,13 +141,13 @@ function renderWaterData(data) {
                         <div class="stat-value">${data.pH}</div>
                         <p class="stat-description">${getPHDescription(data.pH)}</p>
                     </div>
-
-                    <div class="stat-card salt">
-                        <div class="stat-status status-${saltStatus}">${getStatusIcon(saltStatus)}</div>
-                        <div class="icon">🧂</div>
-                        <h2 class="stat-title">Salt Level</h2>
-                        <div class="stat-value">${data.saltLevel} ppt</div>
-                        <p class="stat-description">${getSaltDescription(data.saltLevel)}</p>
+                    
+                    <div class="stat-card salt">  
+                        <div class="stat-status status-${orpStatus}">${getStatusIcon(orpStatus)}</div>
+                        <div class="icon">⚡</div>  
+                        <h2 class="stat-title">ORP Level</h2>
+                        <div class="stat-value">${data.orp} mV</div>  
+                        <p class="stat-description">${getORPDescription(data.orp)}</p>
                     </div>
 
                     <div class="stat-card temperature">
