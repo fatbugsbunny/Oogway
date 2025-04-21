@@ -3,13 +3,18 @@ package com.example.demo;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+
 @RestController
 public class Controller {
     private final Service service;
 
     public Controller(Service service) {
         this.service = service;
+    }
+
+    @GetMapping("/waterData")
+    public WaterData getWaterData() {
+        return Service.getWaterData();
     }
 
     @GetMapping("/pagedWaterData")

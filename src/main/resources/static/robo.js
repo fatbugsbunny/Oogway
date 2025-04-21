@@ -1,17 +1,10 @@
 try {
-    const socket = new SockJS('/ws'); // backend endpoint
-    const stompClient = Stomp.over(socket);
-
-    stompClient.connect({}, function (frame) {
-        console.log('Connectedddd: ' + frame);
-
-        stompClient.subscribe('/topic/dashboard', function (message) {
-            renderWaterData(JSON.parse(message.body));
-            console.log("#######");
-        });
-
-        console.log('📡 Subscribed to /topic/dashboard');
-    });
+    setInterval(() => {
+            fetch("/waterData")
+                .then((response) => response.json())
+                .then((json) => renderWaterData(json))
+        }
+        , 1000)
 } catch (error) {
     console.error("Error fetching water data:", error);
     document.getElementById('content').innerHTML = `
